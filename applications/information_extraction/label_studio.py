@@ -20,6 +20,19 @@ import random
 import time
 from decimal import Decimal
 
+#argparse是python用于解析命令行参数和选项的标准模块，用于解析命令行参数，目的是在终端窗口(ubuntu是终端窗口，windows是命令行窗口)输入训练的参数和选项
+#使用步骤
+#1：parser = argparse.ArgumentParser()
+#2：parser.add_argument()
+#3：parser.parse_args()
+
+#上面三个步骤解释如下：
+#1. 创建一个解析对象；
+#2.向该对象中添加你要关注的命令行参数和选项，每一个add_argument方法对应一个你要关注的参数或选项；
+#3. 最后调用parse_args()方法进行解析；解析成功之后即可使用。
+
+
+
 import numpy as np
 import paddle
 
