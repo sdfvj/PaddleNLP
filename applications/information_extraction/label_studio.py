@@ -72,7 +72,7 @@ def do_convert():
     if args.is_shuffle:
         indexes = np.random.permutation(len(raw_examples))
         index_list = indexes.tolist()
-        raw_examples = [raw_examples[i] for i in indexes]
+        raw_examples = [raw_examples[i] for i in indexes]  #our raw examples is a json file, list of dictionaries
 
     i1, i2, _ = args.splits
     p1 = int(len(raw_examples) * i1)
@@ -84,10 +84,10 @@ def do_convert():
 
     with open(os.path.join(args.save_dir, "sample_index.json"), "w") as fp:
         maps = {"train_ids": train_ids, "dev_ids": dev_ids, "test_ids": test_ids}
-        fp.write(json.dumps(maps))
+        fp.write(json.dumps(maps))   # this json file is like":{"train_ids": [32, 6, 19, 3, 27, 36, 12, 2, 16, 34, 20, 11, 5, 17, 37, 14, 22, 24, 21, 18, 31, 26, 10, 15, 33, 4, 9, 8, 13, 25], "dev_ids": [35, 29, 1, 28, 30, 0, 7, 23], "test_ids": []}
 
     if raw_examples[0]["data"].get("image"):
-        anno_type = "image"
+        anno_type = "image" # distinguish the type of our objectives: imgae or text(in label studio file, we could find each big dicionary crresponds to an image, and one element in it is like:"to_name":"image"
     else:
         anno_type = "text"
 
