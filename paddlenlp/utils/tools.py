@@ -500,8 +500,8 @@ class DataConverter(object):
             images, bbox_list = [], []
 
         logger.info("Converting annotation data...")
-        with tqdm(total=len(raw_examples)) as pbar:
-            for line in raw_examples:
+        with tqdm(total=len(raw_examples)) as pbar:   #tqdm是一个python进度条库，可以在 Python长循环中添加一个进度提示信息。
+            for line in raw_examples:   #用with语句，进度条完成后会自动关闭.totally update the progress for len(raw_examples) times
 
                 if self.anno_type == "text":
                     items = self.process_text_tag(line, task_type="ext")
